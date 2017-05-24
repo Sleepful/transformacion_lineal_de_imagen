@@ -1,0 +1,60 @@
+Interfaz Grafica //relacionado con la imagen de GUI en la especificacion
+	+ cargar imagen
+		> seleccionar el path
+		> mostrar imagen cargada en el GUI
+			- resized? **nota abajo**
+	+ insertar matriz de transformacion
+		2 X 2, cada numerito se inserta en un textbox
+
+	+ seleccionar punto de origen del sistema de coordenadas
+	se puede implementar de varias maneras supongo:
+		> forma simple:
+			- se inserta en un textbox las coordenadas
+		> forma un poco menos simple:
+			- se muestra el punto de origen de las coordenadas respecto a la imagen (como un gran + en la imagen)
+		> forma menos simple de todas:
+			- se muestra la + sobre la imagen y se puede arrastrar con el mouse para indicar la punto de origen de las coordenadas
+
+	+ aplicar transformacion 
+
+		> valida:
+			- matriz de transformacion
+			- hay imagen cargada al programa
+		> envia:
+			- envia la imagen a la Logica
+			- envia la matriz de transoformacion a la Logica
+				* formato cualquiera que sea simple, como un array/lista
+			- envia las coordenadas
+				para hacerlo mas simple, solo es necesario que envie en que parte del sistema de coordenadas se encuentra la esquina superior izquierda de la imagen. Entonces si la imagen mide 100x100 y el origen de las coordenadas estuviese en el puro centro, solo hace falta decir que el (x,y) seria (50,50) 
+
+		> recibe una imagen de vuelta
+		> recibe donde queda el sistema de coordenadas en la nueva imagen
+		> tiene que mostrar la nueva imagen en el GUI
+			- resized? **nota abajo**
+
+
+**nota**
+	mae basicamente hay un problemilla con la carga de imagen (la base y la que recibe despues de la transformacion), y es que pueden venir de distintos tamaños, entonces si es mas pequena que la parte del GUI que muestra la imagen, va a quedar espacio en blanco y si es muy grande no se va a mostrar completamente. 
+	Ahora el problema viene siendo que el resizing la imagen es lo de interpolacion que vale puntos extra, por lo tanto creo que podriamos cargar la imagen como salga y no importa si se sale de la pantalla y solo se ve una parte o si sobra espacio en la pantalla, ya que lo de interpolacion se supone que son puntos extra y si lo hacemos podria dejarse para el final.
+	pero di no se, seguro es muy facil usar una libreria cualquiera y poner .resize(image) y ya lol.
+
+
+Logica
+
+	recibe:
+		imagen 
+		matriz
+		posicion de la imagen segun el origen de coordenadas
+
+	pasos en orden:
+		- transforma la imagen a alguna especie de matriz con el valor de gris/blanco/negro que tiene cada elemento
+		- aplica la transformacion
+		- despues de transformar la matriz, convierte la nueva matriz en una imagen
+		- creo que debe mostrar donde quedaria el origen del sistemam de coordenadas asi que devolveria la nueva posicion de la imagen (esquina top-left) en el sistema de coordenadas
+
+	devuelve:
+		nueva imagen
+		nueva posicion del origen de coordenadas para la nueva imagen
+
+
+

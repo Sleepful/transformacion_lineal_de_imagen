@@ -2,7 +2,7 @@ Interfaz Grafica //relacionado con la imagen de GUI en la especificacion
 	+ cargar imagen
 		> seleccionar el path
 		> mostrar imagen cargada en el GUI
-			- resized? **nota abajo**
+			- si es mas grande de la cuenta se ponen scrollbars 
 	+ insertar matriz de transformacion
 		2 X 2, cada numerito se inserta en un textbox
 
@@ -30,13 +30,9 @@ Interfaz Grafica //relacionado con la imagen de GUI en la especificacion
 		> recibe una imagen de vuelta
 		> recibe donde queda el sistema de coordenadas en la nueva imagen
 		> tiene que mostrar la nueva imagen en el GUI
-			- resized? **nota abajo**
+			- si es mas grande de la cuenta se ponen scrollbars 
 
 
-**nota**
-	mae basicamente hay un problemilla con la carga de imagen (la base y la que recibe despues de la transformacion), y es que pueden venir de distintos tamaños, entonces si es mas pequena que la parte del GUI que muestra la imagen, va a quedar espacio en blanco y si es muy grande no se va a mostrar completamente. 
-	Ahora el problema viene siendo que el resizing la imagen es lo de interpolacion que vale puntos extra, por lo tanto creo que podriamos cargar la imagen como salga y no importa si se sale de la pantalla y solo se ve una parte o si sobra espacio en la pantalla, ya que lo de interpolacion se supone que son puntos extra y si lo hacemos podria dejarse para el final.
-	pero di no se, seguro es muy facil usar una libreria cualquiera y poner .resize(image) y ya lol.
 
 
 Logica
@@ -49,7 +45,12 @@ Logica
 	pasos en orden:
 		- transforma la imagen a alguna especie de matriz con el valor de gris/blanco/negro que tiene cada elemento
 		- aplica la transformacion
+			- aqui iria la parte de interpolacion, pueden haber 3 (se supne que son puntos extra pero sin interpolacion algunas imagenes quedarian bien raras):
+				> closest neighbor
+				> cuadratic
+				> linear doble
 		- despues de transformar la matriz, convierte la nueva matriz en una imagen
+			- si la transformacion queda 'torcida' o lo que sea, supongo que tiene que llenar el espacio vacio para que quede como una imagen rectangular
 		- creo que debe mostrar donde quedaria el origen del sistemam de coordenadas asi que devolveria la nueva posicion de la imagen (esquina top-left) en el sistema de coordenadas
 
 	devuelve:

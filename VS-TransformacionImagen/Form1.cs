@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,9 +25,93 @@ namespace VS_TransformacionImagen
 
         }
 
+        string pathDeImagenTransformada = Directory.GetCurrentDirectory() + @"\temp.png";
+
+
         private void button2_Click(object sender, EventArgs e)
         {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Por favor seleccionar una imagen primero.");
+            }
+            else
+            {
+                if (validarMatriz())
+                {
+                    //llamar a logica sin interpolacion AQUI
+                    if (true) //validar que ha funcionado la transformacion CON ESTE IF
+                    {
+                        //cargar imagen de memoria
+                        try
+                        {
+                            pictureBox2.Image = Image.FromFile(pathDeImagenTransformada);
+                        }
+                        catch (Exception e2)
+                        {
+                            MessageBox.Show("Se ha dado un error al tratar de cargar la nueva imagen.\n" + e2.ToString());
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se ha dado un error al aplicar la transformación a la imagen.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor llenar la matriz de transformación con números enteros.");
+                }
+            }
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Por favor seleccionar una imagen primero.");
+            }
+            else
+            {
+                if (validarMatriz())
+                {
+                    //llamar a logica con interpolacion AQUI
+                    if (false) //validar que ha funcionado la transformacion CON ESTE IF
+                    {
+                        //cargar imagen de memoria
+                        try
+                        {
+                            pictureBox2.Image = Image.FromFile(pathDeImagenTransformada);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Se ha dado un error al tratar de cargar la nueva imagen./n" + e.ToString());
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se ha dado un error al aplicar la transformación a la imagen.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor llenar la matriz de transformación con números enteros.");
+                }
+            }
+        }
+
+        private bool validarMatriz()
+        {
+            bool valor = true;
+            List<TextBox> C = new List<TextBox>();
+            C.Add(textBox4);
+            C.Add(textBox5);
+            C.Add(textBox6);
+            C.Add(textBox7);
+            foreach (TextBox t in C)
+            {
+                if (!validarNumEntero(t.Text))
+                    valor = false;
+            }
+            return valor;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -60,7 +146,7 @@ namespace VS_TransformacionImagen
         }
 
         /* me complique mucho con este metodo asi que hice otro lol:
-         *      private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+         *    -->  private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
          * 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
@@ -113,6 +199,72 @@ namespace VS_TransformacionImagen
         {
 
         }
+
+        private bool validarNumEntero(string s)
+        {
+            string pattern = @"^\d+$";
+                if(Regex.IsMatch(s,pattern))
+                    return true;
+                return false;
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private Color invalido = Color.Pink;
+        private Color valido = Color.White;
+
+        private void textBox4_Validating(object sender, CancelEventArgs e)
+        {
+            if (!validarNumEntero(textBox4.Text))
+            {
+                textBox4.BackColor = invalido;
+            }
+            else 
+            {
+                textBox4.BackColor = valido;
+            }
+        }
+
+        private void textBox5_Validating(object sender, CancelEventArgs e)
+        {
+            if (!validarNumEntero(textBox5.Text))
+            {
+                textBox5.BackColor = invalido;
+            }
+            else 
+            {
+                textBox5.BackColor = valido;
+            }
+        }
+
+        private void textBox6_Validating(object sender, CancelEventArgs e)
+        {
+            if (!validarNumEntero(textBox6.Text))
+            {
+                textBox6.BackColor = invalido;
+            }
+            else 
+            {
+                textBox6.BackColor = valido;
+            }
+        }
+
+        private void textBox7_Validating(object sender, CancelEventArgs e)
+        {
+            if (!validarNumEntero(textBox7.Text))
+            {
+                textBox7.BackColor = invalido;
+            }
+            else
+            {
+                textBox7.BackColor = valido;
+            }
+        }
+
+
 
     }
 }

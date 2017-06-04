@@ -12,6 +12,7 @@ namespace VS_TransformacionImagen
 {
     public partial class Form1 : Form
     {
+        public Point origenCoordenadasImagen = Point.Empty;
         public Form1()
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace VS_TransformacionImagen
                 this.textBox1.Text = openFileDialog1.FileName;
                 pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
                 pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
+                textBox2.Text = (string.Format("X: {0} Y: {1}", origenCoordenadasImagen.X, origenCoordenadasImagen.Y));
             }  
 
         }
@@ -57,9 +59,60 @@ namespace VS_TransformacionImagen
 
         }
 
+        /* me complique mucho con este metodo asi que hice otro lol:
+         *      private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+         * 
         private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+
+                Point pointOnPicture = PointToClient(MousePosition);
+                Point picturePointOnForm = pictureBox1.FindForm().PointToClient(pictureBox1.Parent.PointToScreen(pictureBox1.Location));
+                pointOnPicture.Offset(-picturePointOnForm.X, -picturePointOnForm.Y); //offsets
+
+                MessageBox.Show(string.Format("X: {0} Y: {1}",
+                    pointOnPicture.X, pointOnPicture.Y));
+                origenCoordenadasImagen = pointOnPicture; //guarda variable
+                drawOrigenCoordenadasImagen(origenCoordenadasImagen);
+            }
+        }
+         */
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                origenCoordenadasImagen = e.Location;
+                textBox2.Text = (string.Format("X: {0} Y: {1}", e.X, e.Y));
+                pictureBox1.Invalidate();
+            }
+        }
+
+
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                    Pen p = new Pen(Color.Blue, 3);
+                    e.Graphics.DrawLine(p,
+                        Point.Add(origenCoordenadasImagen, new Size(0, -150)), Point.Add(origenCoordenadasImagen, new Size(0, 150)));
+                    p.Color = Color.Red;
+                    e.Graphics.DrawLine(p,
+                        Point.Add(origenCoordenadasImagen, new Size(-150, 0)), Point.Add(origenCoordenadasImagen, new Size(150, 0)));
+            }
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

@@ -38,25 +38,19 @@ namespace VS_TransformacionImagen
             {   
                 if (validarMatriz())
                 {
-                    //llamar a logica sin interpolacion AQUI
-                    if (true) //validar que ha funcionado la transformacion CON ESTE IF
+                    try
                     {
-                        //cargar imagen de memoria
-                        try
-                        {
-                            int[] matriz = new int[] { Int32.Parse(textBox4.Text), Int32.Parse(textBox5.Text),
-                                Int32.Parse(textBox6.Text), Int32.Parse(textBox7.Text) };
-                            string path = textBox1.Text;
-                            pictureBox2.Image = Logica.Diff(@path,origenCoordenadasImagen.X,origenCoordenadasImagen.Y,matriz);
-                        }
-                        catch (Exception e2)
-                        {
-                            MessageBox.Show("Se ha dado un error al tratar de cargar la nueva imagen.\n" + e2.ToString());
-                        }
+                        int[] matriz = new int[] { Int32.Parse(textBox4.Text), Int32.Parse(textBox5.Text),
+                            Int32.Parse(textBox6.Text), Int32.Parse(textBox7.Text) };
+                        string path = textBox1.Text;
+                        Bitmap bmp = Logica.Diff(@path,origenCoordenadasImagen.X,origenCoordenadasImagen.Y,matriz);
+                        pictureBox2.Image = bmp;
+                        //bmp.Save("temp.bmp");
+                            
                     }
-                    else
+                    catch (Exception e2)
                     {
-                        MessageBox.Show("Se ha dado un error al aplicar la transformación a la imagen.");
+                        MessageBox.Show("Se ha dado un error al tratar de transformar la imagen.\n" + e2.ToString());
                     }
                 }
                 else
@@ -76,22 +70,14 @@ namespace VS_TransformacionImagen
             {
                 if (validarMatriz())
                 {
-                    //llamar a logica con interpolacion AQUI
-                    if (false) //validar que ha funcionado la transformacion CON ESTE IF
+                    try
                     {
-                        //cargar imagen de memoria
-                        try
-                        {
-                            pictureBox2.Image = Image.FromFile(pathDeImagenTransformada);
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Se ha dado un error al tratar de cargar la nueva imagen./n" + e.ToString());
-                        }
+                        MessageBox.Show("No se ha implementado la transformacion con interpolación.");
+
                     }
-                    else
+                    catch (Exception e2)
                     {
-                        MessageBox.Show("Se ha dado un error al aplicar la transformación a la imagen.");
+                        MessageBox.Show("Se ha dado un error al tratar de transformar la imagen.\n" + e2.ToString());
                     }
                 }
                 else

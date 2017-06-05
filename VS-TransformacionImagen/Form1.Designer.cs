@@ -33,6 +33,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,10 +49,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -123,6 +123,39 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Transformar imagen";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(145, 121);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(36, 20);
+            this.textBox7.TabIndex = 7;
+            this.textBox7.Validating += new System.ComponentModel.CancelEventHandler(this.textBox7_Validating);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(101, 121);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(36, 20);
+            this.textBox6.TabIndex = 6;
+            this.textBox6.Validating += new System.ComponentModel.CancelEventHandler(this.textBox6_Validating);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(145, 91);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(36, 20);
+            this.textBox5.TabIndex = 5;
+            this.textBox5.Validating += new System.ComponentModel.CancelEventHandler(this.textBox5_Validating);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(101, 91);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(36, 20);
+            this.textBox4.TabIndex = 4;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBox4.Validating += new System.ComponentModel.CancelEventHandler(this.textBox4_Validating);
             // 
             // label2
             // 
@@ -265,39 +298,6 @@
             this.textBox3.Size = new System.Drawing.Size(333, 20);
             this.textBox3.TabIndex = 7;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(101, 91);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(36, 20);
-            this.textBox4.TabIndex = 4;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-            this.textBox4.Validating += new System.ComponentModel.CancelEventHandler(this.textBox4_Validating);
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(145, 91);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(36, 20);
-            this.textBox5.TabIndex = 5;
-            this.textBox5.Validating += new System.ComponentModel.CancelEventHandler(this.textBox5_Validating);
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(101, 121);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(36, 20);
-            this.textBox6.TabIndex = 6;
-            this.textBox6.Validating += new System.ComponentModel.CancelEventHandler(this.textBox6_Validating);
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(145, 121);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(36, 20);
-            this.textBox7.TabIndex = 7;
-            this.textBox7.Validating += new System.ComponentModel.CancelEventHandler(this.textBox7_Validating);
             // 
             // Form1
             // 

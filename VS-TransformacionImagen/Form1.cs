@@ -35,7 +35,7 @@ namespace VS_TransformacionImagen
                 MessageBox.Show("Por favor seleccionar una imagen primero.");
             }
             else
-            {
+            {   
                 if (validarMatriz())
                 {
                     //llamar a logica sin interpolacion AQUI
@@ -44,7 +44,10 @@ namespace VS_TransformacionImagen
                         //cargar imagen de memoria
                         try
                         {
-                            pictureBox2.Image = Image.FromFile(pathDeImagenTransformada);
+                            int[] matriz = new int[] { Int32.Parse(textBox4.Text), Int32.Parse(textBox5.Text),
+                                Int32.Parse(textBox6.Text), Int32.Parse(textBox7.Text) };
+                            string path = textBox1.Text;
+                            pictureBox2.Image = Logica.Diff(@path,origenCoordenadasImagen.X,origenCoordenadasImagen.Y,matriz);
                         }
                         catch (Exception e2)
                         {

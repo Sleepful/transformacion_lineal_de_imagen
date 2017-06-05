@@ -45,7 +45,7 @@ namespace VS_TransformacionImagen
                         string path = textBox1.Text;
                         Bitmap bmp = Logica.Diff(@path,origenCoordenadasImagen.X,origenCoordenadasImagen.Y,matriz);
                         pictureBox2.Image = bmp;
-                        //bmp.Save("temp.bmp");
+                        bmp.Save("temp.bmp");
                             
                     }
                     catch (Exception e2)

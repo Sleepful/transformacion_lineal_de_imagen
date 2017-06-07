@@ -8,7 +8,8 @@ Desarrollado por:
     Ignacio Gómez        correo: ignacio.gomez.chaverri@gmail.com
     José Pablo Vargas    correo: ricardodh123@gmail.com
 
-Mayor información en Documentacion/Manual de usuario.pdf
+Mayor información del programa en 
+    Documentacion/Manual de usuario.pdf
 
 
 ![alt text](https://i.imgur.com/XZIzK3U.jpg)

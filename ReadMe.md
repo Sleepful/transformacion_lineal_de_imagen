@@ -9,6 +9,7 @@ Desarrollado por:
     José Pablo Vargas    correo: ricardodh123@gmail.com
 
 Mayor información del programa en 
+
     Documentacion/Manual de usuario.pdf
 
 

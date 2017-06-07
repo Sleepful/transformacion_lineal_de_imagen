@@ -5,8 +5,8 @@ Transformacion lineal de una imagen PNG en escala de grises apartir de una matri
 
 Desarrollado por:
 -----------------
-    Ignacio Gómez    correo: ignacio.gomez.chaverri@gmail.com
-José Pablo Vargas    correo: ricardodh123@gmail.com
+        Ignacio Gómez    correo: ignacio.gomez.chaverri@gmail.com
+    José Pablo Vargas    correo: ricardodh123@gmail.com
 
 Mayor información en Documentacion/Manual de usuario.pdf
 
